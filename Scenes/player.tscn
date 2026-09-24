@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://p6llrpquns7a"]
+
+[ext_resource type="Script" uid="uid://nn6on4ela7w6" path="res://Scripts/player.gd" id="1_v0iea"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ubmik"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ubmik"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_nfl04"]
+
+[sub_resource type="Gradient" id="Gradient_f60y1"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0, 0.9500752, 0.95223826, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5ci4y"]
+gradient = SubResource("Gradient_f60y1")
+
+[sub_resource type="Gradient" id="Gradient_v0iea"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ubmik"]
+gradient = SubResource("Gradient_v0iea")
+width = 50
+height = 50
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0)
+
+[node name="Player" type="CharacterBody2D" unique_id=1483049283]
+scale = Vector2(0.7, 0.7)
+collision_mask = 15
+script = ExtResource("1_v0iea")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=34057599]
+shape = SubResource("CircleShape2D_ubmik")
+
+[node name="PlayerTexture" type="MeshInstance2D" parent="." unique_id=718832784]
+position = Vector2(2.2737368e-13, 3.5527137e-15)
+scale = Vector2(20.02268, 20.000006)
+mesh = SubResource("SphereMesh_ubmik")
+
+[node name="Eye1" type="MeshInstance2D" parent="PlayerTexture" unique_id=1344129514]
+position = Vector2(0.15, 0.162)
+scale = Vector2(0.074971676, 0.07499999)
+mesh = SubResource("SphereMesh_nfl04")
+texture = SubResource("GradientTexture2D_5ci4y")
+
+[node name="Eye2" type="MeshInstance2D" parent="PlayerTexture" unique_id=95059150]
+position = Vector2(0.13733011, -0.16249993)
+scale = Vector2(0.074971676, 0.07499999)
+mesh = SubResource("SphereMesh_nfl04")
+texture = SubResource("GradientTexture2D_5ci4y")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1923994407]
+zoom = Vector2(4, 4)
+
+[node name="PointLight2D" type="PointLight2D" parent="Camera2D" unique_id=835806635]
+texture = SubResource("GradientTexture2D_ubmik")
+
+[node name="PlayerUi" type="CanvasLayer" parent="." unique_id=1281696119]
+
+[node name="HSlider" type="HSlider" parent="PlayerUi" unique_id=1979746010]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -81.0
+offset_top = -36.0
+offset_right = 81.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+min_value = 50.0
+max_value = 512.0
+value = 512.0
+
+[node name="ProgressBar" type="ProgressBar" parent="PlayerUi" unique_id=291166941]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -31.0
+offset_top = 7.0
+offset_right = -9.0
+offset_bottom = 51.0
+grow_horizontal = 0
+value = 100.0
+fill_mode = 3
+show_percentage = false
+
+[node name="PlayerInventory" type="CanvasLayer" parent="." unique_id=1817413972]
+
+[node name="Panel" type="Panel" parent="PlayerInventory" unique_id=1305504862]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -461.0
+offset_top = -258.0
+offset_right = 461.0
+offset_bottom = 258.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="value_changed" from="PlayerUi/HSlider" to="." method="_on_h_slider_value_changed"]
