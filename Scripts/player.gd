@@ -12,6 +12,7 @@ var PassedTime=0
 func _ready() -> void:
 	LightNoise.seed=randi()
 	LightNoise.frequency=0.05
+	$PlayerInventory.visible=false
 
 func _process(delta: float) -> void:
 	
@@ -27,6 +28,8 @@ func _process(delta: float) -> void:
 	$Camera2D/PointLight2D.texture.width=BrightnessBoxValue
 	$Camera2D/PointLight2D.texture.height=BrightnessBoxValue
 	
+	if Input.is_action_just_pressed("Inventory"):
+		$PlayerInventory.visible=!$PlayerInventory.visible
 
 func _physics_process(delta: float) -> void:
 	var Direction:= Input.get_vector("Left","Right","Up","Down")

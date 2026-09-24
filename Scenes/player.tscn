@@ -1,6 +1,11 @@
 [gd_scene format=3 uid="uid://p6llrpquns7a"]
 
 [ext_resource type="Script" uid="uid://nn6on4ela7w6" path="res://Scripts/player.gd" id="1_v0iea"]
+[ext_resource type="Script" uid="uid://bmnq5wmgnrq60" path="res://Scripts/battery_slot_1.gd" id="2_6t5aa"]
+[ext_resource type="Script" uid="uid://d0vdmk1cxwhod" path="res://Scripts/battery1.gd" id="2_cvnsp"]
+[ext_resource type="Script" uid="uid://i7br64nd51f1" path="res://Scripts/battery_slot_2.gd" id="4_vgqql"]
+[ext_resource type="Script" uid="uid://1xq4c2nbyj4h" path="res://Scripts/battery_slot_3.gd" id="5_fkybt"]
+[ext_resource type="Script" uid="uid://db22dvihuabfy" path="res://Scripts/battery_slot_4.gd" id="6_x3wgy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ubmik"]
 
@@ -25,6 +30,19 @@ height = 50
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.8, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v0iea"]
+bg_color = Color(0.4692971, 0.46929634, 0.46929651, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="Gradient" id="Gradient_cvnsp"]
+colors = PackedColorArray(0, 0, 0.654902, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cvnsp"]
+gradient = SubResource("Gradient_cvnsp")
 
 [node name="Player" type="CharacterBody2D" unique_id=1483049283]
 scale = Vector2(0.7, 0.7)
@@ -90,7 +108,7 @@ show_percentage = false
 
 [node name="PlayerInventory" type="CanvasLayer" parent="." unique_id=1817413972]
 
-[node name="Panel" type="Panel" parent="PlayerInventory" unique_id=1305504862]
+[node name="BackGroundUI" type="Panel" parent="PlayerInventory" unique_id=1305504862]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -102,5 +120,64 @@ offset_right = 461.0
 offset_bottom = 258.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0iea")
+
+[node name="PlayerTexture" type="MeshInstance2D" parent="PlayerInventory/BackGroundUI" unique_id=1233084324]
+position = Vector2(137, 110)
+scale = Vector2(100, 100)
+mesh = SubResource("SphereMesh_ubmik")
+
+[node name="Eye1" type="MeshInstance2D" parent="PlayerInventory/BackGroundUI/PlayerTexture" unique_id=859389774]
+position = Vector2(0.15, 0.162)
+scale = Vector2(0.074971676, 0.07499999)
+mesh = SubResource("SphereMesh_nfl04")
+texture = SubResource("GradientTexture2D_5ci4y")
+
+[node name="Eye2" type="MeshInstance2D" parent="PlayerInventory/BackGroundUI/PlayerTexture" unique_id=650051470]
+position = Vector2(0.13733011, -0.16249993)
+scale = Vector2(0.074971676, 0.07499999)
+mesh = SubResource("SphereMesh_nfl04")
+texture = SubResource("GradientTexture2D_5ci4y")
+
+[node name="BatteryStorage" type="Panel" parent="PlayerInventory" unique_id=1510769686]
+offset_left = 393.0
+offset_top = 116.0
+offset_right = 971.0
+offset_bottom = 273.0
+
+[node name="BatterySlot1" type="Panel" parent="PlayerInventory/BatteryStorage" unique_id=1264613202]
+layout_mode = 0
+offset_left = 54.0
+offset_right = 128.0
+offset_bottom = 157.0
+script = ExtResource("2_6t5aa")
+
+[node name="Battery1" type="TextureRect" parent="PlayerInventory/BatteryStorage/BatterySlot1" unique_id=375046130]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("GradientTexture2D_cvnsp")
+script = ExtResource("2_cvnsp")
+
+[node name="BatterySlot2" type="Panel" parent="PlayerInventory/BatteryStorage" unique_id=1909935266]
+layout_mode = 0
+offset_left = 194.0
+offset_right = 268.0
+offset_bottom = 157.0
+script = ExtResource("4_vgqql")
+
+[node name="BatterySlot3" type="Panel" parent="PlayerInventory/BatteryStorage" unique_id=1675937155]
+layout_mode = 0
+offset_left = 330.0
+offset_right = 404.0
+offset_bottom = 157.0
+script = ExtResource("5_fkybt")
+
+[node name="BatterySlot4" type="Panel" parent="PlayerInventory/BatteryStorage" unique_id=1537965742]
+layout_mode = 0
+offset_left = 469.0
+offset_right = 543.0
+offset_bottom = 157.0
+script = ExtResource("6_x3wgy")
 
 [connection signal="value_changed" from="PlayerUi/HSlider" to="." method="_on_h_slider_value_changed"]

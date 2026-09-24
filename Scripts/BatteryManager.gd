@@ -8,7 +8,7 @@ var Battery1Charge=100
 var Battery2Charge=100
 var Battery3Charge=100
 var Battery4Charge=100
-var Battery1Location='Torch'
+var Battery1Location='BatterySlot1'
 var Battery2Location
 var Battery3Location
 var Battery4Location
