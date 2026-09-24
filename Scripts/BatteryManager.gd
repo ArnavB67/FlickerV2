@@ -20,3 +20,25 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func GetBatteryCharge(BatteryId):
+	if BatteryId=="Battery1":
+		return Battery1Charge
+	if BatteryId=="Battery2":
+		return Battery2Charge
+	if BatteryId=="Battery3":
+		return Battery3Charge
+	if BatteryId=="Battery4":
+		return Battery4Charge
+	else:
+		return 0
+
+func DrainBatteryCharge(BatteryId,DrainAmount):
+	if BatteryId=="Battery1":
+		Battery1Charge=max(0,Battery1Charge-DrainAmount)
+	if BatteryId=="Battery2":
+		Battery1Charge=max(0,Battery2Charge-DrainAmount)
+	if BatteryId=="Battery3":
+		Battery1Charge=max(0,Battery3Charge-DrainAmount)
+	if BatteryId=="Battery4":
+		Battery1Charge=max(0,Battery4Charge-DrainAmount)

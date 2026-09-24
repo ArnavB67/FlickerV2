@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://i7br64nd51f1" path="res://Scripts/battery_slot_2.gd" id="4_vgqql"]
 [ext_resource type="Script" uid="uid://1xq4c2nbyj4h" path="res://Scripts/battery_slot_3.gd" id="5_fkybt"]
 [ext_resource type="Script" uid="uid://db22dvihuabfy" path="res://Scripts/battery_slot_4.gd" id="6_x3wgy"]
+[ext_resource type="Script" uid="uid://blaoe4tu4qpt5" path="res://Scripts/torch_slot_1.gd" id="7_3smsa"]
+[ext_resource type="Script" uid="uid://8xim2oc120kg" path="res://Scripts/torch.gd" id="7_8erm5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ubmik"]
 
@@ -107,6 +109,7 @@ fill_mode = 3
 show_percentage = false
 
 [node name="PlayerInventory" type="CanvasLayer" parent="." unique_id=1817413972]
+visible = false
 
 [node name="BackGroundUI" type="Panel" parent="PlayerInventory" unique_id=1305504862]
 anchors_preset = 8
@@ -180,4 +183,28 @@ offset_right = 543.0
 offset_bottom = 157.0
 script = ExtResource("6_x3wgy")
 
-[connection signal="value_changed" from="PlayerUi/HSlider" to="." method="_on_h_slider_value_changed"]
+[node name="Torch" type="Panel" parent="PlayerInventory" unique_id=175944378]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -399.0
+offset_top = 86.0
+offset_right = -309.0
+offset_bottom = 170.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_8erm5")
+
+[node name="TorchSlot" type="Panel" parent="PlayerInventory/Torch" unique_id=24961203 node_paths=PackedStringArray("Torch")]
+layout_mode = 0
+offset_left = 107.0
+offset_top = 1.0
+offset_right = 181.0
+offset_bottom = 158.0
+script = ExtResource("7_3smsa")
+Torch = NodePath("..")
+
+[connection signal="value_changed" from="PlayerUi/HSlider" to="PlayerInventory/Torch" method="_on_h_slider_value_changed"]
+[connection signal="child_exiting_tree" from="PlayerInventory/Torch/TorchSlot" to="PlayerInventory/Torch/TorchSlot" method="_on_child_exiting_tree"]
