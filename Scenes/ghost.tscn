@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://c7vybicppygff"]
+
+[ext_resource type="Texture2D" uid="uid://qqd1rq18fas0" path="res://Assets/Sprites/CrypticGhost_Idle.png" id="1_3mxmt"]
+[ext_resource type="Script" uid="uid://c3lhnv4lwtx1i" path="res://Scripts/ghost.gd" id="1_e3r4w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3r4w"]
+atlas = ExtResource("1_3mxmt")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_108wt"]
+atlas = ExtResource("1_3mxmt")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3btnm"]
+atlas = ExtResource("1_3mxmt")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_taxxh"]
+atlas = ExtResource("1_3mxmt")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ubmik"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e3r4w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_108wt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3btnm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_taxxh")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 30.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3mxmt"]
+radius = 32.89377
+
+[node name="Ghost" type="CharacterBody2D" unique_id=1960190183]
+script = ExtResource("1_e3r4w")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1824266744]
+position = Vector2(-0.5000012, -2.0000024)
+scale = Vector2(0.92187506, 0.96874994)
+sprite_frames = SubResource("SpriteFrames_ubmik")
+autoplay = "default"
+frame_progress = 0.7569795
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1280785845]
+shape = SubResource("CircleShape2D_3mxmt")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=704508048]

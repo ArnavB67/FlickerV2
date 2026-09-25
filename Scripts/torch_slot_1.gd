@@ -12,7 +12,7 @@ func _drop_data(at_position: Vector2, data: Variant) -> void:
 	var Battery=data["Node"]
 	Battery.get_parent().remove_child(Battery)
 	add_child(Battery)
-	Battery.position=Vector2.ZERO
+	Battery.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	Torch.TorchBatteryId=data["BatteryId"]
 
 
