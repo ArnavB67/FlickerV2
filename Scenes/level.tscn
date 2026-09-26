@@ -1889,10 +1889,27 @@ metadata/_edit_vertical_guides_ = [409.0, 428.0]
 metadata/_edit_horizontal_guides_ = [330.0]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=357369733]
+color = Color(0, 0, 0, 1)
 
 [node name="Player" parent="." unique_id=1483049283 instance=ExtResource("2_k5f4k")]
 y_sort_enabled = true
 position = Vector2(399, 160)
+
+[node name="CameraLight" parent="Player/Camera2D" parent_id_path=PackedInt32Array(1483049283, 1923994407) index="0" unique_id=317573063]
+scale = Vector2(1, 1)
+
+[node name="VSlider" type="VSlider" parent="Player/PlayerUi" parent_id_path=PackedInt32Array(1483049283, 1281696119) index="2" unique_id=1394046595]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -42.0
+offset_top = 276.0
+offset_right = -26.0
+offset_bottom = 387.0
+grow_horizontal = 0
+min_value = 50.0
+max_value = 256.0
+value = 50.0
 
 [node name="Background" type="AudioStreamPlayer2D" parent="." unique_id=1689057430]
 stream = ExtResource("5_wqkje")
@@ -1902,7 +1919,7 @@ autoplay = true
 position = Vector2(418, 335)
 scale = Vector2(0.165, 0.165)
 Player = NodePath("../Player")
-Torch = NodePath("../Player/PlayerInventory/Torch")
+Torch = NodePath("../Player/PlayerUi/PlayerInventory/Torch")
 PlayerHeartBeatSoundPlayer = NodePath("../Player/HeartBeatSound")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=41162736]
@@ -1924,6 +1941,7 @@ z_index = 1
 tile_map_data = PackedByteArray("AAAdABUAAAARAA0AAAAeABYAAAAQAA0AAAAgABUAAAASAA0AAAAfABAAAAAWAAAAAAAlABIAAAASAA4AAAAjABIAAAAQAA4AAAAkABIAAAARAA4AAAAXABgAAAAQAAEAAAAYABgAAAARAAIAAAAaABgAAAARAAIAAAAZABgAAAARAAEAAAAbABgAAAASAAIAAAAWAAoAAAAOAAoAAAAWAAkAAAAOAAoAAAATAAoAAAAOAAoAAAATAAkAAAAOAAoAAAAhAAcAAAANAAIAAFAgAAcAAAANAAMAAFAhAAgAAAAMAAAAAFAgAAgAAAAMAAEAAFA=")
 tile_set = SubResource("TileSet_6t334")
 
+[connection signal="value_changed" from="Player/PlayerUi/VSlider" to="Player/PlayerUi/PlayerInventory/Camera" method="_on_v_slider_value_changed"]
 [connection signal="finished" from="Background" to="." method="_on_background_finished"]
 
 [editable path="Player"]

@@ -11,6 +11,8 @@
 [ext_resource type="Script" uid="uid://8xim2oc120kg" path="res://Scripts/torch.gd" id="7_8erm5"]
 [ext_resource type="Texture2D" uid="uid://bq6ds5mp526m7" path="res://Assets/Sprites/Torch.png" id="10_tx1dd"]
 [ext_resource type="AudioStream" uid="uid://cum1kqs1iyyha" path="res://Assets/Sound/pwlpl-heartbeat-tense-377250.mp3" id="11_gymyn"]
+[ext_resource type="Script" uid="uid://bacu13fxhe7lu" path="res://Scripts/camera.gd" id="11_pu2lt"]
+[ext_resource type="Script" uid="uid://ddujv2uqq7ao1" path="res://Scripts/camera_slot.gd" id="12_ukyrk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ubmik"]
 
@@ -24,6 +26,15 @@ colors = PackedColorArray(0, 0.9500752, 0.95223826, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_5ci4y"]
 gradient = SubResource("Gradient_f60y1")
+
+[sub_resource type="Gradient" id="Gradient_pu2lt"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sbk8j"]
+gradient = SubResource("Gradient_pu2lt")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
 
 [sub_resource type="Gradient" id="Gradient_v0iea"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
@@ -42,6 +53,30 @@ corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ubmik"]
+bg_color = Color(0.5163938, 0.5163938, 0.51639366, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0.3882353, 0.14509805, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sbk8j"]
+bg_color = Color(0.6785482, 0.98924524, 0.516664, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0.3882353, 0.14509805, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [node name="Player" type="CharacterBody2D" unique_id=1483049283]
 scale = Vector2(0.7, 0.7)
@@ -71,10 +106,157 @@ texture = SubResource("GradientTexture2D_5ci4y")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1923994407]
 zoom = Vector2(4, 4)
 
+[node name="CameraLight" type="PointLight2D" parent="Camera2D" unique_id=317573063]
+scale = Vector2(1.4285713, 1.4285713)
+range_item_cull_mask = 3
+texture = SubResource("GradientTexture2D_sbk8j")
+
 [node name="PointLight2D" type="PointLight2D" parent="Camera2D" unique_id=835806635]
 texture = SubResource("GradientTexture2D_ubmik")
 
 [node name="PlayerUi" type="CanvasLayer" parent="." unique_id=1281696119]
+
+[node name="PlayerInventory" type="CanvasLayer" parent="PlayerUi" unique_id=1817413972]
+
+[node name="BackGroundUI" type="Panel" parent="PlayerUi/PlayerInventory" unique_id=1305504862]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -461.0
+offset_top = -258.0
+offset_right = 461.0
+offset_bottom = 258.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0iea")
+
+[node name="PlayerTexture" type="MeshInstance2D" parent="PlayerUi/PlayerInventory/BackGroundUI" unique_id=1233084324]
+position = Vector2(137, 110)
+scale = Vector2(100, 100)
+mesh = SubResource("SphereMesh_ubmik")
+
+[node name="Eye1" type="MeshInstance2D" parent="PlayerUi/PlayerInventory/BackGroundUI/PlayerTexture" unique_id=859389774]
+position = Vector2(0.15, 0.162)
+scale = Vector2(0.074971676, 0.07499999)
+mesh = SubResource("SphereMesh_nfl04")
+texture = SubResource("GradientTexture2D_5ci4y")
+
+[node name="Eye2" type="MeshInstance2D" parent="PlayerUi/PlayerInventory/BackGroundUI/PlayerTexture" unique_id=650051470]
+position = Vector2(0.13733011, -0.16249993)
+scale = Vector2(0.074971676, 0.07499999)
+mesh = SubResource("SphereMesh_nfl04")
+texture = SubResource("GradientTexture2D_5ci4y")
+
+[node name="BatteryStorage" type="Panel" parent="PlayerUi/PlayerInventory" unique_id=1510769686]
+offset_left = 393.0
+offset_top = 116.0
+offset_right = 971.0
+offset_bottom = 273.0
+
+[node name="BatterySlot1" type="Panel" parent="PlayerUi/PlayerInventory/BatteryStorage" unique_id=1264613202]
+layout_mode = 0
+offset_left = 54.0
+offset_right = 128.0
+offset_bottom = 157.0
+script = ExtResource("2_6t5aa")
+
+[node name="Battery1" type="TextureRect" parent="PlayerUi/PlayerInventory/BatteryStorage/BatterySlot1" unique_id=375046130]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_f1ek2")
+expand_mode = 3
+script = ExtResource("2_cvnsp")
+
+[node name="BatterySlot2" type="Panel" parent="PlayerUi/PlayerInventory/BatteryStorage" unique_id=1909935266]
+layout_mode = 0
+offset_left = 194.0
+offset_right = 268.0
+offset_bottom = 157.0
+script = ExtResource("4_vgqql")
+
+[node name="BatterySlot3" type="Panel" parent="PlayerUi/PlayerInventory/BatteryStorage" unique_id=1675937155]
+layout_mode = 0
+offset_left = 330.0
+offset_right = 404.0
+offset_bottom = 157.0
+script = ExtResource("5_fkybt")
+
+[node name="BatterySlot4" type="Panel" parent="PlayerUi/PlayerInventory/BatteryStorage" unique_id=1537965742]
+layout_mode = 0
+offset_left = 469.0
+offset_right = 543.0
+offset_bottom = 157.0
+script = ExtResource("6_x3wgy")
+
+[node name="Torch" type="Panel" parent="PlayerUi/PlayerInventory" unique_id=175944378]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -399.0
+offset_top = 126.0
+offset_right = -309.0
+offset_bottom = 210.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_8erm5")
+
+[node name="TextureRect" type="TextureRect" parent="PlayerUi/PlayerInventory/Torch" unique_id=193998512]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_tx1dd")
+
+[node name="TorchSlot" type="Panel" parent="PlayerUi/PlayerInventory/Torch" unique_id=24961203 node_paths=PackedStringArray("Torch")]
+layout_mode = 0
+offset_left = 107.0
+offset_top = -39.0
+offset_right = 181.0
+offset_bottom = 118.0
+script = ExtResource("7_3smsa")
+Torch = NodePath("..")
+
+[node name="Camera" type="Panel" parent="PlayerUi/PlayerInventory" unique_id=1506390271]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 187.0
+offset_top = 126.0
+offset_right = 277.0
+offset_bottom = 210.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("11_pu2lt")
+
+[node name="TextureRect" type="TextureRect" parent="PlayerUi/PlayerInventory/Camera" unique_id=81127777]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_tx1dd")
+
+[node name="CameraSlot" type="Panel" parent="PlayerUi/PlayerInventory/Camera" unique_id=213569162 node_paths=PackedStringArray("Camera")]
+layout_mode = 0
+offset_left = 107.0
+offset_top = -39.0
+offset_right = 181.0
+offset_bottom = 118.0
+script = ExtResource("12_ukyrk")
+Camera = NodePath("..")
 
 [node name="HSlider" type="HSlider" parent="PlayerUi" unique_id=1979746010]
 anchors_preset = 7
@@ -92,132 +274,137 @@ min_value = 50.0
 max_value = 512.0
 value = 50.0
 
-[node name="ProgressBar" type="ProgressBar" parent="PlayerUi" unique_id=291166941]
+[node name="Battery1" type="ProgressBar" parent="PlayerUi" unique_id=291166941]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -31.0
-offset_top = 7.0
-offset_right = -9.0
-offset_bottom = 51.0
+offset_left = -53.0
+offset_top = 15.0
+offset_right = -31.0
+offset_bottom = 59.0
 grow_horizontal = 0
+scale = Vector2(1.65, 1.65)
+theme_override_styles/background = SubResource("StyleBoxFlat_ubmik")
+theme_override_styles/fill = SubResource("StyleBoxFlat_sbk8j")
 value = 100.0
 fill_mode = 3
 show_percentage = false
 
-[node name="PlayerInventory" type="CanvasLayer" parent="." unique_id=1817413972]
-visible = false
-
-[node name="BackGroundUI" type="Panel" parent="PlayerInventory" unique_id=1305504862]
+[node name="Label" type="Label" parent="PlayerUi/Battery1" unique_id=662789146]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -461.0
-offset_top = -258.0
-offset_right = 461.0
-offset_bottom = 258.0
+offset_left = -4.5
+offset_top = -11.5
+offset_right = 4.5
+offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_v0iea")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "?"
 
-[node name="PlayerTexture" type="MeshInstance2D" parent="PlayerInventory/BackGroundUI" unique_id=1233084324]
-position = Vector2(137, 110)
-scale = Vector2(100, 100)
-mesh = SubResource("SphereMesh_ubmik")
-
-[node name="Eye1" type="MeshInstance2D" parent="PlayerInventory/BackGroundUI/PlayerTexture" unique_id=859389774]
-position = Vector2(0.15, 0.162)
-scale = Vector2(0.074971676, 0.07499999)
-mesh = SubResource("SphereMesh_nfl04")
-texture = SubResource("GradientTexture2D_5ci4y")
-
-[node name="Eye2" type="MeshInstance2D" parent="PlayerInventory/BackGroundUI/PlayerTexture" unique_id=650051470]
-position = Vector2(0.13733011, -0.16249993)
-scale = Vector2(0.074971676, 0.07499999)
-mesh = SubResource("SphereMesh_nfl04")
-texture = SubResource("GradientTexture2D_5ci4y")
-
-[node name="BatteryStorage" type="Panel" parent="PlayerInventory" unique_id=1510769686]
-offset_left = 393.0
-offset_top = 116.0
-offset_right = 971.0
-offset_bottom = 273.0
-
-[node name="BatterySlot1" type="Panel" parent="PlayerInventory/BatteryStorage" unique_id=1264613202]
-layout_mode = 0
-offset_left = 54.0
-offset_right = 128.0
-offset_bottom = 157.0
-script = ExtResource("2_6t5aa")
-
-[node name="Battery1" type="TextureRect" parent="PlayerInventory/BatteryStorage/BatterySlot1" unique_id=375046130]
-layout_mode = 1
-anchors_preset = 15
+[node name="Battery2" type="ProgressBar" parent="PlayerUi" unique_id=211855980]
+anchors_preset = 1
+anchor_left = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_f1ek2")
-expand_mode = 3
-script = ExtResource("2_cvnsp")
+offset_left = -102.0
+offset_top = 15.0
+offset_right = -80.0
+offset_bottom = 59.0
+grow_horizontal = 0
+scale = Vector2(1.65, 1.65)
+theme_override_styles/background = SubResource("StyleBoxFlat_ubmik")
+theme_override_styles/fill = SubResource("StyleBoxFlat_sbk8j")
+value = 100.0
+fill_mode = 3
+show_percentage = false
 
-[node name="BatterySlot2" type="Panel" parent="PlayerInventory/BatteryStorage" unique_id=1909935266]
-layout_mode = 0
-offset_left = 194.0
-offset_right = 268.0
-offset_bottom = 157.0
-script = ExtResource("4_vgqql")
-
-[node name="BatterySlot3" type="Panel" parent="PlayerInventory/BatteryStorage" unique_id=1675937155]
-layout_mode = 0
-offset_left = 330.0
-offset_right = 404.0
-offset_bottom = 157.0
-script = ExtResource("5_fkybt")
-
-[node name="BatterySlot4" type="Panel" parent="PlayerInventory/BatteryStorage" unique_id=1537965742]
-layout_mode = 0
-offset_left = 469.0
-offset_right = 543.0
-offset_bottom = 157.0
-script = ExtResource("6_x3wgy")
-
-[node name="Torch" type="Panel" parent="PlayerInventory" unique_id=175944378]
+[node name="Label" type="Label" parent="PlayerUi/Battery2" unique_id=2129436917]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -399.0
-offset_top = 126.0
-offset_right = -309.0
-offset_bottom = 210.0
+offset_left = -4.5
+offset_top = -11.5
+offset_right = 4.5
+offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("7_8erm5")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "?"
 
-[node name="TextureRect" type="TextureRect" parent="PlayerInventory/Torch" unique_id=193998512]
-layout_mode = 1
-anchors_preset = 15
+[node name="Battery3" type="ProgressBar" parent="PlayerUi" unique_id=2043080348]
+anchors_preset = 1
+anchor_left = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = 15.0
+offset_right = -128.0
+offset_bottom = 59.0
+grow_horizontal = 0
+scale = Vector2(1.65, 1.65)
+theme_override_styles/background = SubResource("StyleBoxFlat_ubmik")
+theme_override_styles/fill = SubResource("StyleBoxFlat_sbk8j")
+value = 100.0
+fill_mode = 3
+show_percentage = false
+
+[node name="Label" type="Label" parent="PlayerUi/Battery3" unique_id=1487330757]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.5
+offset_top = -11.5
+offset_right = 4.5
+offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("10_tx1dd")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "?"
 
-[node name="TorchSlot" type="Panel" parent="PlayerInventory/Torch" unique_id=24961203 node_paths=PackedStringArray("Torch")]
-layout_mode = 0
-offset_left = 107.0
-offset_top = -39.0
-offset_right = 181.0
-offset_bottom = 118.0
-script = ExtResource("7_3smsa")
-Torch = NodePath("..")
+[node name="Battery4" type="ProgressBar" parent="PlayerUi" unique_id=1305744992]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -198.0
+offset_top = 15.0
+offset_right = -176.0
+offset_bottom = 59.0
+grow_horizontal = 0
+scale = Vector2(1.65, 1.65)
+theme_override_styles/background = SubResource("StyleBoxFlat_ubmik")
+theme_override_styles/fill = SubResource("StyleBoxFlat_sbk8j")
+value = 100.0
+fill_mode = 3
+show_percentage = false
+
+[node name="Label" type="Label" parent="PlayerUi/Battery4" unique_id=425916898]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.5
+offset_top = -11.5
+offset_right = 4.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "?"
 
 [node name="HeartBeatSound" type="AudioStreamPlayer2D" parent="." unique_id=184902126]
 stream = ExtResource("11_gymyn")
 
-[connection signal="value_changed" from="PlayerUi/HSlider" to="PlayerInventory/Torch" method="_on_h_slider_value_changed"]
-[connection signal="child_exiting_tree" from="PlayerInventory/Torch/TorchSlot" to="PlayerInventory/Torch/TorchSlot" method="_on_child_exiting_tree"]
+[connection signal="child_exiting_tree" from="PlayerUi/PlayerInventory/Torch/TorchSlot" to="PlayerUi/PlayerInventory/Torch/TorchSlot" method="_on_child_exiting_tree"]
+[connection signal="child_exiting_tree" from="PlayerUi/PlayerInventory/Camera/CameraSlot" to="PlayerUi/PlayerInventory/Camera/CameraSlot" method="_on_child_exiting_tree"]
+[connection signal="value_changed" from="PlayerUi/HSlider" to="PlayerUi/PlayerInventory/Torch" method="_on_h_slider_value_changed"]

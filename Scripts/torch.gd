@@ -5,6 +5,7 @@ var BrightnessBoxValue=50
 var BatteryBaseDrainRate=0.01
 var LightNoise=FastNoiseLite.new()
 var PassedTime=0
+@onready var point_light_2d: PointLight2D = $"../../../Camera2D/PointLight2D"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,21 +16,20 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if TorchBatteryId==null:
-		$"../../Camera2D/PointLight2D".visible=false
+		point_light_2d.visible=false
 	else:
 		var TorchBatteryCharge=BatteryManager.GetBatteryCharge(TorchBatteryId)
 		if TorchBatteryCharge==0:
-			$"../../Camera2D/PointLight2D".visible=false
+			point_light_2d.visible=false
 		else:
-			$"../../Camera2D/PointLight2D".visible=true
+			point_light_2d.visible=true
 			var NoiseSpeedMultiplier=lerp(5,20,1-(TorchBatteryCharge/100))
 			PassedTime+=delta*NoiseSpeedMultiplier
 			var LightFluctuation=LightNoise.get_noise_1d(PassedTime)
 			var FluctuationInstability=lerp(0.1,0.8,1-(TorchBatteryCharge/100))
-			$"../../Camera2D/PointLight2D".energy=1+(LightFluctuation*FluctuationInstability)
-			$"../../PlayerUi/ProgressBar".value=TorchBatteryCharge
-			$"../../Camera2D/PointLight2D".texture.width=BrightnessBoxValue
-			$"../../Camera2D/PointLight2D".texture.height=BrightnessBoxValue
+			point_light_2d.energy=1+(LightFluctuation*FluctuationInstability)
+			point_light_2d.texture.width=BrightnessBoxValue
+			point_light_2d.texture.height=BrightnessBoxValue
 			var Drain= BatteryBaseDrainRate*(BrightnessBoxValue/50)*(BrightnessBoxValue/50)*delta
 			BatteryManager.DrainBatteryCharge(TorchBatteryId,Drain)
 

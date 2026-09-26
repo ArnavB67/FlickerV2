@@ -1,6 +1,6 @@
 extends Node
 
-var Battery1Found=false
+var Battery1Found=true
 var Battery2Found=false
 var Battery3Found=false
 var Battery4Found=false
@@ -8,10 +8,7 @@ var Battery1Charge=100
 var Battery2Charge=100
 var Battery3Charge=100
 var Battery4Charge=100
-var Battery1Location='BatterySlot1'
-var Battery2Location
-var Battery3Location
-var Battery4Location
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -20,6 +17,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+	
 
 func GetBatteryCharge(BatteryId):
 	if BatteryId=="Battery1":
@@ -37,8 +35,8 @@ func DrainBatteryCharge(BatteryId,DrainAmount):
 	if BatteryId=="Battery1":
 		Battery1Charge=max(0,Battery1Charge-DrainAmount)
 	if BatteryId=="Battery2":
-		Battery1Charge=max(0,Battery2Charge-DrainAmount)
+		Battery2Charge=max(0,Battery2Charge-DrainAmount)
 	if BatteryId=="Battery3":
-		Battery1Charge=max(0,Battery3Charge-DrainAmount)
+		Battery3Charge=max(0,Battery3Charge-DrainAmount)
 	if BatteryId=="Battery4":
-		Battery1Charge=max(0,Battery4Charge-DrainAmount)
+		Battery4Charge=max(0,Battery4Charge-DrainAmount)

@@ -52,7 +52,7 @@ func SetPatrolTargetLocation():
 func CheckProximity():
 	var DistanceToPlayer=global_position.distance_to(Player.global_position)
 	var LightRadius=Torch.BrightnessBoxValue/2
-	var DetectionRadius=LightRadius+50
+	var DetectionRadius=LightRadius+5
 	if DistanceToPlayer<DetectionRadius:
 		CurrentState=State.Alert
 		AlertTimer=0
@@ -63,8 +63,8 @@ func Alert(delta):
 	velocity=Vector2.ZERO
 	AlertTimer+=delta
 	var DistanceToPlayer=global_position.distance_to(Player.global_position)
-	var LightRadius=Torch.BrightnessBoxValue/2
-	var DetectionRadius=LightRadius+50
+	var LightRadius=Torch.BrightnessBoxValue/4
+	var DetectionRadius=LightRadius+5
 	if DistanceToPlayer>DetectionRadius:
 		CurrentState=State.Patrol
 		if PlayerHeartBeatSoundPlayer.playing:

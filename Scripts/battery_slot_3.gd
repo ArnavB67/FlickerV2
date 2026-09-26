@@ -13,5 +13,4 @@ func _drop_data(at_position: Vector2, data: Variant) -> void:
 	Battery.get_parent().remove_child(Battery)
 	add_child(Battery)
 	Battery.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	if data["BatteryId"]=="Battery1":
-		BatteryManager.Battery1Location="BatterySlot3"
+	
