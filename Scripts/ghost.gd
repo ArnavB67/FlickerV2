@@ -13,6 +13,9 @@ var ChaseSpeed=250
 var MaxAlertTime=2
 var AlertTimer=0
 var CurrentState=State.Patrol
+var TrappedTimer=0
+var MaxTrappedTime=30
+@export var PlayerHeartBeatSoundPlayer: AudioStreamPlayer2D
 
 func _ready() -> void:
 	await get_tree().physics_frame
@@ -35,7 +38,7 @@ func Patrol(delta):
 	var Direction=global_position.direction_to(navigation_agent_2d.get_next_path_position())
 	velocity=Direction*PatrolSpeed
 	move_and_slide()
-	#CheckProximity()
+	CheckProximity()
 
 
 func SetPatrolTargetLocation():
@@ -53,12 +56,35 @@ func CheckProximity():
 	if DistanceToPlayer<DetectionRadius:
 		CurrentState=State.Alert
 		AlertTimer=0
+		if not PlayerHeartBeatSoundPlayer.playing:
+			PlayerHeartBeatSoundPlayer.play()
 
 func Alert(delta):
-	pass
+	velocity=Vector2.ZERO
+	AlertTimer+=delta
+	var DistanceToPlayer=global_position.distance_to(Player.global_position)
+	var LightRadius=Torch.BrightnessBoxValue/2
+	var DetectionRadius=LightRadius+50
+	if DistanceToPlayer>DetectionRadius:
+		CurrentState=State.Patrol
+		if PlayerHeartBeatSoundPlayer.playing:
+			PlayerHeartBeatSoundPlayer.stop()
+	elif AlertTimer>=MaxAlertTime:
+		CurrentState=State.Chase
+		AlertTimer=0
+		if PlayerHeartBeatSoundPlayer.playing:
+			PlayerHeartBeatSoundPlayer.stop()
+		
 	
 func Chase(delta):
-	pass
+	navigation_agent_2d.target_position=Player.global_position
+	var Direction=global_position.direction_to(navigation_agent_2d.get_next_path_position())
+	velocity=Direction*ChaseSpeed
+	move_and_slide()
 	
 func Trapped(delta):
-	pass
+	TrappedTimer+=delta
+	if TrappedTimer<MaxTrappedTime:
+		velocity=Vector2.ZERO
+	else:
+		State.Patrol

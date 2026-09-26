@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://blaoe4tu4qpt5" path="res://Scripts/torch_slot_1.gd" id="7_3smsa"]
 [ext_resource type="Script" uid="uid://8xim2oc120kg" path="res://Scripts/torch.gd" id="7_8erm5"]
 [ext_resource type="Texture2D" uid="uid://bq6ds5mp526m7" path="res://Assets/Sprites/Torch.png" id="10_tx1dd"]
+[ext_resource type="AudioStream" uid="uid://cum1kqs1iyyha" path="res://Assets/Sound/pwlpl-heartbeat-tense-377250.mp3" id="11_gymyn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ubmik"]
 
@@ -89,7 +90,7 @@ grow_horizontal = 2
 grow_vertical = 0
 min_value = 50.0
 max_value = 512.0
-value = 512.0
+value = 50.0
 
 [node name="ProgressBar" type="ProgressBar" parent="PlayerUi" unique_id=291166941]
 anchors_preset = 1
@@ -214,6 +215,9 @@ offset_right = 181.0
 offset_bottom = 118.0
 script = ExtResource("7_3smsa")
 Torch = NodePath("..")
+
+[node name="HeartBeatSound" type="AudioStreamPlayer2D" parent="." unique_id=184902126]
+stream = ExtResource("11_gymyn")
 
 [connection signal="value_changed" from="PlayerUi/HSlider" to="PlayerInventory/Torch" method="_on_h_slider_value_changed"]
 [connection signal="child_exiting_tree" from="PlayerInventory/Torch/TorchSlot" to="PlayerInventory/Torch/TorchSlot" method="_on_child_exiting_tree"]

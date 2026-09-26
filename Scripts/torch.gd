@@ -1,7 +1,7 @@
 extends Panel
 
 var TorchBatteryId=null
-var BrightnessBoxValue=512
+var BrightnessBoxValue=50
 var BatteryBaseDrainRate=0.01
 var LightNoise=FastNoiseLite.new()
 var PassedTime=0
