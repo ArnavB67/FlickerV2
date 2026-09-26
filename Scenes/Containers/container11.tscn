@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dalv0182jy444"]
+
+[ext_resource type="PackedScene" uid="uid://sehip5qhp410" path="res://Scenes/Containers/container.tscn" id="1_xu2e4"]
+[ext_resource type="Texture2D" uid="uid://de6b3yyah2m3r" path="res://Assets/Tilesheets/roguelikeIndoor_transparent.png" id="2_4j0uk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_crtni"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_unokl"]
+size = Vector2(17, 35)
+
+[node name="Container" unique_id=1029075191 instance=ExtResource("1_xu2e4")]
+
+[node name="ColorRect" parent="." index="0" unique_id=1085358200]
+offset_top = -9.0
+offset_right = 9.0
+offset_bottom = 8.0
+
+[node name="Sprite2D" parent="." index="1" unique_id=762607953]
+texture = ExtResource("2_4j0uk")
+region_enabled = true
+region_rect = Rect2(220.96353, 203.96341, 16.046585, 16.072495)
+
+[node name="CollisionShape2D" parent="." index="2" unique_id=1206649803]
+shape = SubResource("RectangleShape2D_crtni")
+
+[node name="CollisionShape2D" parent="DetectionArea" parent_id_path=PackedInt32Array(1347584009) index="0" unique_id=1865204645]
+position = Vector2(-0.5, 9.5)
+shape = SubResource("RectangleShape2D_unokl")

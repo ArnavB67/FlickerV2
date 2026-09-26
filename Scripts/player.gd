@@ -5,6 +5,7 @@ const SPEED = 200.0
 
 
 func _ready() -> void:
+	add_to_group("Player")
 	$PlayerUi/PlayerInventory.visible=false
 
 func _process(delta: float) -> void:

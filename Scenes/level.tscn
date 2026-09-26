@@ -5,6 +5,21 @@
 [ext_resource type="PackedScene" uid="uid://p6llrpquns7a" path="res://Scenes/player.tscn" id="2_k5f4k"]
 [ext_resource type="PackedScene" uid="uid://c7vybicppygff" path="res://Scenes/ghost.tscn" id="5_0f350"]
 [ext_resource type="AudioStream" uid="uid://bs3b4btxki5wn" path="res://Assets/Sound/MainBackgroundTrack.mp3" id="5_wqkje"]
+[ext_resource type="PackedScene" uid="uid://b132e2wjui4ip" path="res://Scenes/Containers/Container1.tscn" id="6_0f350"]
+[ext_resource type="PackedScene" uid="uid://b7hqqt63clbfl" path="res://Scenes/Containers/container10.tscn" id="7_3a44l"]
+[ext_resource type="PackedScene" uid="uid://dalv0182jy444" path="res://Scenes/Containers/container11.tscn" id="8_0cmrb"]
+[ext_resource type="PackedScene" uid="uid://2i3j6xnx4aeh" path="res://Scenes/Containers/container12.tscn" id="9_pnhnk"]
+[ext_resource type="PackedScene" uid="uid://cs238e7vg8f6m" path="res://Scenes/Containers/container13.tscn" id="10_24uko"]
+[ext_resource type="PackedScene" uid="uid://bupbeuyk2lnnl" path="res://Scenes/Containers/container14.tscn" id="11_gf56v"]
+[ext_resource type="PackedScene" uid="uid://bu0kryvwhgnmi" path="res://Scenes/Containers/container15.tscn" id="12_6y3s5"]
+[ext_resource type="PackedScene" uid="uid://ckimp74jj38kx" path="res://Scenes/Containers/container2.tscn" id="13_u0did"]
+[ext_resource type="PackedScene" uid="uid://v4kka5m0i387" path="res://Scenes/Containers/container3.tscn" id="14_53r2q"]
+[ext_resource type="PackedScene" uid="uid://dwccvdojqj7kx" path="res://Scenes/Containers/container4.tscn" id="15_luodc"]
+[ext_resource type="PackedScene" uid="uid://cychkcyaa84fk" path="res://Scenes/Containers/container5.tscn" id="16_1cgv8"]
+[ext_resource type="PackedScene" uid="uid://dcpgaa6k6xyv4" path="res://Scenes/Containers/container6.tscn" id="17_hcs0j"]
+[ext_resource type="PackedScene" uid="uid://cl67yxnuwv3ti" path="res://Scenes/Containers/container7.tscn" id="18_t205d"]
+[ext_resource type="PackedScene" uid="uid://bwkuvxo211yrg" path="res://Scenes/Containers/container8.tscn" id="19_idpk0"]
+[ext_resource type="PackedScene" uid="uid://b8qd71byr37jk" path="res://Scenes/Containers/container9.tscn" id="20_dw52x"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ubmik"]
 vertices = PackedVector2Array(649, 393, 327, 393, 535, 375, 637.3281, 375, 457, 375, 585, 153, 585, 199, 489, 201, 375, 183, 505, 151, 637.02344, 329, 637.1875, 345, 637.02344, 345, 535, 329, 537, 327, 481.25, 311, 481.09375, 295, 481.25, 295, 481.09375, 279, 494.9922, 279, 494.97656, 295, 420.14063, 116.09375, 420.02344, 103, 443.72656, 103, 443.79688, 116.22656, 468.14063, 116.09375, 468.02344, 103, 487, 103, 489, 119, 591.1094, 151, 591.09375, 153, 505, 119, 375, 137, 591.1094, 199, 591.09375, 201, 425, 263, 447.10938, 263, 446.9922, 279, 359, 311, 391, 279, 337.0078, 343, 336.89063, 327, 338.03125, 327, 359, 345, 494.9922, 295, 494.97656, 311, 487, 87, 489, 87, 395.79688, 116.22656, 489, 233, 425, 233, 457, 279, 457, 311, 537, 311, 457, 329, 647, 327, 647, 311, 649, 311, 649, 329, 649, 375, 327, 375, 359, 375, 327, 345, 327, 343, 338.03125, 311, 327, 281, 327, 263, 345, 263, 345, 279, 359, 281, 391, 263, 407, 263, 407, 233, 327, 233, 327, 201, 279, 169, 263, 169, 263, 119, 297, 137, 327, 119, 327, 87, 361, 87, 361, 103, 395.72656, 103, 297, 183, 279, 201)
@@ -1346,10 +1361,29 @@ separation = Vector2i(1, 1)
 26:18/0 = 0
 27:18/0 = 0
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ais7f"]
+resource_name = "Containers"
+scenes/1/scene = ExtResource("6_0f350")
+scenes/2/scene = ExtResource("13_u0did")
+scenes/3/scene = ExtResource("14_53r2q")
+scenes/4/scene = ExtResource("15_luodc")
+scenes/5/scene = ExtResource("16_1cgv8")
+scenes/6/scene = ExtResource("17_hcs0j")
+scenes/7/scene = ExtResource("18_t205d")
+scenes/8/scene = ExtResource("19_idpk0")
+scenes/9/scene = ExtResource("20_dw52x")
+scenes/10/scene = ExtResource("7_3a44l")
+scenes/11/scene = ExtResource("8_0cmrb")
+scenes/12/scene = ExtResource("9_pnhnk")
+scenes/13/scene = ExtResource("10_24uko")
+scenes/14/scene = ExtResource("11_gf56v")
+scenes/15/scene = ExtResource("12_6y3s5")
+
 [sub_resource type="TileSet" id="TileSet_sbk8j"]
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 4
 sources/0 = SubResource("TileSetAtlasSource_81xng")
+sources/2 = SubResource("TileSetScenesCollectionSource_ais7f")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wqkje"]
 texture = ExtResource("1_tumq0")
@@ -1885,11 +1919,8 @@ sources/0 = SubResource("TileSetAtlasSource_wqkje")
 
 [node name="Level" type="Node2D" unique_id=159323526]
 script = ExtResource("1_81xng")
-metadata/_edit_vertical_guides_ = [409.0, 428.0]
-metadata/_edit_horizontal_guides_ = [330.0]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=357369733]
-color = Color(0, 0, 0, 1)
 
 [node name="Player" parent="." unique_id=1483049283 instance=ExtResource("2_k5f4k")]
 y_sort_enabled = true
@@ -1933,7 +1964,7 @@ tile_set = SubResource("TileSet_ubmik")
 
 [node name="Items" type="TileMapLayer" parent="NavigationRegion2D" unique_id=1234034948]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAlAAoAAAAaAAgAAAAlAAsAAAAaAAkAAAAXAAUAAAAAABEAAAAYAAUAAAABABEAAAAZAAUAAAACABEAAAAcAAUAAAAEABEAAAAdAAUAAAAFABEAAAAPAAkAAAAMAAwAAGAPAAgAAAANAAwAAGAPAAcAAAAJAAwAAGAPAAoAAAAJAAwAAGAUAAkAAAATAAgAAFAUAAoAAAAUAAgAAFAVAAkAAAAUAAgAAGAVAAoAAAATAAgAAGAWAAoAAAAOAAoAAAAWAAkAAAAOAAoAAAATAAkAAAAOAAoAAAATAAoAAAAOAAoAAAAgAAcAAAANAAMAAFAhAAcAAAANAAIAAFAhAAgAAAAMAAAAAFAgAAgAAAAMAAEAAFAeAA0AAAAWAAAAAAAUAA0AAAAVAAAAAAAlAAkAAAANABEAAAAlAAwAAAANABEAAAAeAAUAAAAQAAAAAAAWAAUAAAARAAAAAAAbAAUAAAAVABEAAAAaAAUAAAAVABEAAAAcAAYAAAABAAIAAAAZAAYAAAABAAIAAAAXABgAAAAQAAEAAAAYABgAAAARAAIAAAAZABgAAAARAAEAAAAaABgAAAARAAIAAAAbABgAAAASAAIAAAAfABAAAAALAAwAAAAfABEAAAALAA0AAAAfABIAAAALAA4AAAAeABAAAAAMAAwAAAAdABAAAAAKAAwAAAAdABEAAAAKAA0AAAAdABIAAAAKAA4AAAAcABAAAAALABAAAAAUABQAAAAPABEAAAAUABMAAAAPABAAAAAdABYAAAAQAAsAAAAeABYAAAARAAsAAAAfABYAAAARAAsAAAAgABYAAAASAAsAAAAhABYAAAADAAgAAAAcABYAAAACAAgAAAAfABUAAAARAAsAADAeABUAAAARAAsAADAeABcAAAABAAgAAAAfABcAAAABAAgAAAAgABcAAAABAAgAAAAdABcAAAABAAgAAAAgABUAAAAQAAsAADAdABUAAAASAAsAADAhABUAAAADAAgAAAAcABUAAAACAAgAAAAdABQAAAAAAAgAAAAeABQAAAAAAAgAAAAfABQAAAAAAAgAAAAgABQAAAAAAAgAAAAkABMAAAAEAA0AAAAlABMAAAAHAA8AAAAmABMAAAAHABAAAAAnABMAAAAUABEAAAAoABUAAAAaAA8AAAAoABYAAAAaABAAAAAWABAAAAAIAA4AAAAXABAAAAAIAA0AAAAjABMAAAAGAAUAAAAiABMAAAAFAAUAAAAUABIAAAAJAAIAAAAVABIAAAAIAAIAAAAVABYAAAAIAAIAAAAUABYAAAAJAAIAAAA=")
+tile_map_data = PackedByteArray("AAAlAAoAAAAaAAgAAAAlAAsAAAAaAAkAAAAXAAUAAgAAAAAAAQAYAAUAAgAAAAAAAgAZAAUAAgAAAAAAAwAcAAUAAgAAAAAABQAdAAUAAgAAAAAABgAPAAkAAgAAAAAACmAPAAgAAgAAAAAAC2APAAcAAgAAAAAADGAPAAoAAgAAAAAADGAUAAkAAAATAAgAAFAUAAoAAAAUAAgAAFAVAAkAAAAUAAgAAGAVAAoAAAATAAgAAGAWAAoAAAAOAAoAAAAWAAkAAAAOAAoAAAATAAkAAAAOAAoAAAATAAoAAAAOAAoAAAAgAAcAAAANAAMAAFAhAAcAAAANAAIAAFAhAAgAAAAMAAAAAFAgAAgAAAAMAAEAAFAeAA0AAAAWAAAAAAAUAA0AAAAVAAAAAAAlAAkAAAANABEAAAAlAAwAAAANABEAAAAeAAUAAAAQAAAAAAAWAAUAAAARAAAAAAAbAAUAAgAAAAAADQAaAAUAAgAAAAAADQAcAAYAAAABAAIAAAAZAAYAAAABAAIAAAAXABgAAAAQAAEAAAAYABgAAAARAAIAAAAZABgAAAARAAEAAAAaABgAAAARAAIAAAAbABgAAAASAAIAAAAfABAAAAALAAwAAAAfABEAAAALAA0AAAAfABIAAAALAA4AAAAeABAAAgAAAAAADAAdABAAAAAKAAwAAAAdABEAAAAKAA0AAAAdABIAAAAKAA4AAAAcABAAAAALABAAAAAUABQAAAAPABEAAAAUABMAAAAPABAAAAAdABYAAAAQAAsAAAAeABYAAAARAAsAAAAfABYAAAARAAsAAAAgABYAAAASAAsAAAAhABYAAAADAAgAAAAcABYAAAACAAgAAAAfABUAAAARAAsAADAeABUAAAARAAsAADAeABcAAAABAAgAAAAfABcAAAABAAgAAAAgABcAAAABAAgAAAAdABcAAAABAAgAAAAgABUAAAAQAAsAADAdABUAAAASAAsAADAhABUAAAADAAgAAAAcABUAAAACAAgAAAAdABQAAAAAAAgAAAAeABQAAAAAAAgAAAAfABQAAAAAAAgAAAAgABQAAAAAAAgAAAAkABMAAgAAAAAABQAlABMAAgAAAAAACAAmABMAAgAAAAAABwAnABMAAgAAAAAADgAoABUAAAAaAA8AAAAoABYAAAAaABAAAAAWABAAAgAAAAAADwAXABAAAgAAAAAADwAjABMAAgAAAAAACQAiABMAAgAAAAAADQAUABIAAAAJAAIAAAAVABIAAAAIAAIAAAAVABYAAAAIAAIAAAAUABYAAAAJAAIAAAA=")
 tile_set = SubResource("TileSet_sbk8j")
 
 [node name="2ndItemsOverThePlayer" type="TileMapLayer" parent="NavigationRegion2D" unique_id=2069482559]

@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://cum1kqs1iyyha" path="res://Assets/Sound/pwlpl-heartbeat-tense-377250.mp3" id="11_gymyn"]
 [ext_resource type="Script" uid="uid://bacu13fxhe7lu" path="res://Scripts/camera.gd" id="11_pu2lt"]
 [ext_resource type="Script" uid="uid://ddujv2uqq7ao1" path="res://Scripts/camera_slot.gd" id="12_ukyrk"]
+[ext_resource type="FontFile" uid="uid://dovssavw05h48" path="res://Assets/VT323-Regular.ttf" id="13_7dp3o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ubmik"]
 
@@ -117,6 +118,7 @@ texture = SubResource("GradientTexture2D_ubmik")
 [node name="PlayerUi" type="CanvasLayer" parent="." unique_id=1281696119]
 
 [node name="PlayerInventory" type="CanvasLayer" parent="PlayerUi" unique_id=1817413972]
+visible = false
 
 [node name="BackGroundUI" type="Panel" parent="PlayerUi/PlayerInventory" unique_id=1305504862]
 anchors_preset = 8
@@ -291,6 +293,7 @@ fill_mode = 3
 show_percentage = false
 
 [node name="Label" type="Label" parent="PlayerUi/Battery1" unique_id=662789146]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -304,6 +307,8 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("13_7dp3o")
+theme_override_font_sizes/font_size = 32
 text = "?"
 
 [node name="Battery2" type="ProgressBar" parent="PlayerUi" unique_id=211855980]
@@ -323,6 +328,7 @@ fill_mode = 3
 show_percentage = false
 
 [node name="Label" type="Label" parent="PlayerUi/Battery2" unique_id=2129436917]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -336,6 +342,8 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("13_7dp3o")
+theme_override_font_sizes/font_size = 32
 text = "?"
 
 [node name="Battery3" type="ProgressBar" parent="PlayerUi" unique_id=2043080348]
@@ -355,6 +363,7 @@ fill_mode = 3
 show_percentage = false
 
 [node name="Label" type="Label" parent="PlayerUi/Battery3" unique_id=1487330757]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -368,6 +377,8 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("13_7dp3o")
+theme_override_font_sizes/font_size = 32
 text = "?"
 
 [node name="Battery4" type="ProgressBar" parent="PlayerUi" unique_id=1305744992]
@@ -387,6 +398,7 @@ fill_mode = 3
 show_percentage = false
 
 [node name="Label" type="Label" parent="PlayerUi/Battery4" unique_id=425916898]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -400,10 +412,13 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("13_7dp3o")
+theme_override_font_sizes/font_size = 32
 text = "?"
 
 [node name="HeartBeatSound" type="AudioStreamPlayer2D" parent="." unique_id=184902126]
 stream = ExtResource("11_gymyn")
+volume_db = 1.025
 
 [connection signal="child_exiting_tree" from="PlayerUi/PlayerInventory/Torch/TorchSlot" to="PlayerUi/PlayerInventory/Torch/TorchSlot" method="_on_child_exiting_tree"]
 [connection signal="child_exiting_tree" from="PlayerUi/PlayerInventory/Camera/CameraSlot" to="PlayerUi/PlayerInventory/Camera/CameraSlot" method="_on_child_exiting_tree"]
