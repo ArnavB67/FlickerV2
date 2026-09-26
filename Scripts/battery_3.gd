@@ -1,6 +1,6 @@
 extends TextureRect
 
-var BatteryId='Battery1'
+var BatteryId='Battery3'
 
 func _get_drag_data(at_position: Vector2) -> Variant:
 	var Data={
@@ -16,6 +16,6 @@ func _get_drag_data(at_position: Vector2) -> Variant:
 	MouseFollowPreview.position=-0.5*size
 	set_drag_preview(MouseFollowControl)
 	return Data
-	
+
 func _process(delta: float) -> void:
-	visible=BatteryManager.Battery1Found
+	visible=BatteryManager.Battery3Found

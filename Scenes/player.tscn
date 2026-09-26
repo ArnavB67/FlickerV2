@@ -6,9 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://cy8kagquxol18" path="res://Assets/Sprites/Battery.png" id="3_f1ek2"]
 [ext_resource type="Script" uid="uid://i7br64nd51f1" path="res://Scripts/battery_slot_2.gd" id="4_vgqql"]
 [ext_resource type="Script" uid="uid://1xq4c2nbyj4h" path="res://Scripts/battery_slot_3.gd" id="5_fkybt"]
+[ext_resource type="Script" uid="uid://bebp813nccdra" path="res://Scripts/battery_2.gd" id="6_qqcod"]
 [ext_resource type="Script" uid="uid://db22dvihuabfy" path="res://Scripts/battery_slot_4.gd" id="6_x3wgy"]
 [ext_resource type="Script" uid="uid://blaoe4tu4qpt5" path="res://Scripts/torch_slot_1.gd" id="7_3smsa"]
 [ext_resource type="Script" uid="uid://8xim2oc120kg" path="res://Scripts/torch.gd" id="7_8erm5"]
+[ext_resource type="Script" uid="uid://cxlnvqcix3n6r" path="res://Scripts/battery_3.gd" id="8_igrcy"]
+[ext_resource type="Script" uid="uid://bcwojyiw0jbjj" path="res://Scripts/battery_4.gd" id="10_fs7ks"]
 [ext_resource type="Texture2D" uid="uid://bq6ds5mp526m7" path="res://Assets/Sprites/Torch.png" id="10_tx1dd"]
 [ext_resource type="AudioStream" uid="uid://cum1kqs1iyyha" path="res://Assets/Sound/pwlpl-heartbeat-tense-377250.mp3" id="11_gymyn"]
 [ext_resource type="Script" uid="uid://bacu13fxhe7lu" path="res://Scripts/camera.gd" id="11_pu2lt"]
@@ -165,6 +168,7 @@ offset_bottom = 157.0
 script = ExtResource("2_6t5aa")
 
 [node name="Battery1" type="TextureRect" parent="PlayerUi/PlayerInventory/BatteryStorage/BatterySlot1" unique_id=375046130]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -182,6 +186,18 @@ offset_right = 268.0
 offset_bottom = 157.0
 script = ExtResource("4_vgqql")
 
+[node name="Battery2" type="TextureRect" parent="PlayerUi/PlayerInventory/BatteryStorage/BatterySlot2" unique_id=95065203]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_f1ek2")
+expand_mode = 3
+script = ExtResource("6_qqcod")
+
 [node name="BatterySlot3" type="Panel" parent="PlayerUi/PlayerInventory/BatteryStorage" unique_id=1675937155]
 layout_mode = 0
 offset_left = 330.0
@@ -189,12 +205,36 @@ offset_right = 404.0
 offset_bottom = 157.0
 script = ExtResource("5_fkybt")
 
+[node name="Battery3" type="TextureRect" parent="PlayerUi/PlayerInventory/BatteryStorage/BatterySlot3" unique_id=1853656686]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_f1ek2")
+expand_mode = 3
+script = ExtResource("8_igrcy")
+
 [node name="BatterySlot4" type="Panel" parent="PlayerUi/PlayerInventory/BatteryStorage" unique_id=1537965742]
 layout_mode = 0
 offset_left = 469.0
 offset_right = 543.0
 offset_bottom = 157.0
 script = ExtResource("6_x3wgy")
+
+[node name="Battery4" type="TextureRect" parent="PlayerUi/PlayerInventory/BatteryStorage/BatterySlot4" unique_id=150391082]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_f1ek2")
+expand_mode = 3
+script = ExtResource("10_fs7ks")
 
 [node name="Torch" type="Panel" parent="PlayerUi/PlayerInventory" unique_id=175944378]
 anchors_preset = 8
