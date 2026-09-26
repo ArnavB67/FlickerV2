@@ -5,3 +5,5 @@ with torch you can control its brightness to decide his field of vision but you 
 with a camera you can control your fov but you can see ghost with it, however camera uses more battery than a torch so you have to manage.
 If you hear heartbeat sounds it means ghost has started to notice you, so you have 2 seconds to run away or decrease your torch light till the heartbeat sounds stop, however if you exceed 2 seconds the ghost will chase you and its game over
 you can search stuff in cabinets by pressing E and open inventory by pressing tab
+
+Ai usage include debugging,creating shaders,finding and learning some new features previously unknown to me which include the inbuilt get drag data, drop data functions, and how to make interactable objects with tilemaplayer.
